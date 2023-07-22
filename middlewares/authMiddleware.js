@@ -20,7 +20,8 @@ const authenticateToken = async(req,res,next)=>{
  
   
 
-// // Middleware to check if the user has admin role
+// // Middleware to check if the customer has admin role
+
 const isAdmin = async (req, res, next) => {
   const user = await Customer.findById(req.user._id)
   console.log(user)
@@ -33,5 +34,5 @@ const isAdmin = async (req, res, next) => {
 };
 
 
-  module.exports = {authenticateToken, isAdmin}
+module.exports = {authenticateToken, isAdmin}
 

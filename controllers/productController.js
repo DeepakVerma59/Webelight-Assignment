@@ -23,7 +23,7 @@ const createProduct =  async (req, res) => {
     }
   };
   
-  // Get a specific product by ID
+  // Get single product by ID
   const getProductById =  async (req, res) => {
     
     try {
@@ -39,7 +39,7 @@ const createProduct =  async (req, res) => {
     }
   };
   
-  // Update a product by ID
+  // Update product by ID
   const updateProduct =  async (req, res) => {
     const { id } = req.params;
     const { name, price, category } = req.body;
@@ -58,7 +58,7 @@ const createProduct =  async (req, res) => {
     }
   };
   
-  // Delete a product by ID
+  // Delete product by ID
   const deleteProduct =  async (req, res) => {
     const { id } = req.params;
     try {

@@ -20,6 +20,9 @@ const swaggerOptions = {
       title: 'Webelight Assignment',
       version: '1.0.0'
     },
+    servers:[{
+      url: 'http://localhost:3000/'
+    }]
   },
   apis: ['./index.js'],  
 };
@@ -40,6 +43,105 @@ app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs))
  *         description: Successful login with JWT token
  *    
  */
+/**
+ * @swagger
+ * /register:
+ *   post:
+ *     summary: Register new customer
+ *     
+ *     responses:
+ *       '200':
+ *         description: Successful registerd new customer
+ *    
+ */
+
+/**
+ * @swagger
+ * /all-customers:
+ *   get:
+ *     summary: show all the customers details
+ *     
+ *     responses:
+ *       '200':
+ *         description: only admin can check details of customers
+ *    
+ */
+
+
+/**
+ * @swagger
+ * /get-allproducts:
+ *   get:
+ *     summary: show all the products
+ *     
+ *     responses:
+ *       '200':
+ *         description: Get all products
+ *    
+ */
+
+/**
+ * @swagger
+ * /get-product/:id:
+ *   get:
+ *     summary: get single product by ID
+ *     
+ *     responses:
+ *       '200':
+ *         description: Get product by ID
+ *    
+ */
+
+/**
+ * @swagger
+ * /create-product:
+ *   post:
+ *     summary: Add a new product
+ *     
+ *     responses:
+ *       '200':
+ *         description: Add new product
+ *    
+ */
+
+/**
+ * @swagger
+ * //update-product/:id:
+ *   put:
+ *     summary: Update product details
+ *     
+ *     responses:
+ *       '200':
+ *         description: update product details
+ *    
+ */
+
+/**
+ * @swagger
+ * //delete-product/:id:
+ *   delete:
+ *     summary: Delete product
+ *     
+ *     responses:
+ *       '200':
+ *         description: delete product
+ *    
+ */
+
+/**
+ * @swagger
+ * /filter-products:
+ *   get:
+ *     summary: Filter products and Pagination 
+ *     
+ *     responses:
+ *       '200':
+ *         description: Filter products acc to category, price etc.
+ *    
+ */
+
+
+
 
 
 const authRoutes = require("./routes/authRoutes")

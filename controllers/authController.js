@@ -89,6 +89,8 @@ const registerController = async(req,res)=>{
         }
         }
 
+  // Get all user customers details
+  
     const allCustomers = async (req, res) => {
         try {
           const customers = await Customer.find({role:'user'});

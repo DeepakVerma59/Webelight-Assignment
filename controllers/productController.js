@@ -74,11 +74,10 @@ const createProduct =  async (req, res) => {
   
 
 
-  // Get all products with filtering, pagination, and sorting options
-const filterProducts =  async (req, res) => {
-  const { category, priceMin, priceMax, sort, order, page, limit } = req.body;
-  console.log(req.body)
+// filtering products
 
+const filterProducts =  async (req, res) => {
+  const { category, priceMin, priceMax, page, limit } = req.body;
   try {
     let query = {};
 
@@ -90,18 +89,11 @@ const filterProducts =  async (req, res) => {
       query.price = { $gte: parseInt(priceMin), $lte: parseInt(priceMax) };
     }
 
-    const sortOptions = {};
-    if (sort && (order === 'asc' || order === 'desc')) {
-      sortOptions[sort] = order;
-    }
-
     const pageNumber = parseInt(page) || 1;
     const limitNumber = parseInt(limit) || 10;
     const startIndex = (pageNumber - 1) * limitNumber;
-    const endIndex = pageNumber * limitNumber;
 
     const products = await Product.find(query)
-      .sort(sortOptions)
       .skip(startIndex)
       .limit(limitNumber);
 

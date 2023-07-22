@@ -21,14 +21,13 @@ const swaggerOptions = {
       version: '1.0.0'
     },
   },
-  apis: ['./index.js'],   // List of files to be included in the documentation
+  apis: ['./index.js'],  
 };
 
 const swaggerSpecs = swaggerJSDoc(swaggerOptions)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerSpecs))
 
 
-// app.js (continued)
 
 /**
  * @swagger

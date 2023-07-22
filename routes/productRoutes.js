@@ -4,10 +4,10 @@ const route = express.Router();
 const {createProduct, getAllProducts, getProductById, updateProduct, deleteProduct, filterProducts} = require("../controllers/productController")
 
 //create product
-route.post("/create-product",authenticateToken,createProduct);
+route.post("/create-product",authenticateToken,isAdmin, createProduct);
 
 //update product
-route.put("/update-product/:id",authenticateToken,updateProduct);
+route.put("/update-product/:id",authenticateToken, isAdmin,updateProduct);
 
 //get products
 route.get("/get-allproducts",getAllProducts);
@@ -22,6 +22,6 @@ route.get("/filter-products", filterProducts)
 
 
 //delete-product
-route.delete("/delete-product/:id",authenticateToken, deleteProduct)
+route.delete("/delete-product/:id",authenticateToken, isAdmin, deleteProduct)
 
 module.exports = route

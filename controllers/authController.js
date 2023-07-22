@@ -2,7 +2,6 @@ const Customer = require("../models/customers");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken")
 
-//const comparePassword = require("../helpers/authHelper")
 const JWT_TOKEN = 'hellobrotherhowareyoudoingthisveryevening'
 
 const registerController = async(req,res)=>{
@@ -40,6 +39,7 @@ const registerController = async(req,res)=>{
     }
     }
     
+//  Login
 
     const loginController =async(req,res)=>{
         try{
@@ -57,7 +57,7 @@ const registerController = async(req,res)=>{
                 message:"email is not registered"
             })
         }
-        //const matchingPassword = await comparePassword(password,loginCustomer.password);
+    
         const matchingPassword =  bcrypt.compare(password,loginCustomer.password)
         if(!matchingPassword){
             return res.status(404).send({
@@ -71,8 +71,8 @@ const registerController = async(req,res)=>{
             email:loginCustomer.email,
             role:loginCustomer.role
         }
-        console.log(user)
-        const token = await jwt.sign({_id:loginCustomer.id},JWT_TOKEN,{expiresIn:"10d"});
+    
+        const token = await jwt.sign({_id:loginCustomer.id},JWT_TOKEN,{expiresIn:"5d"});
          res.status(200).send({
             success:true,
             message:"login successful",

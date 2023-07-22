@@ -25,7 +25,7 @@ const isAdmin = async (req, res, next) => {
   const user = await Customer.findById(req.user._id)
   console.log(user)
   if (user.role != "admin") {
-    return res.sendStatus(403);
+    return res.status(403).send({message: "You are not the admin"});
   }
   else{
   next()

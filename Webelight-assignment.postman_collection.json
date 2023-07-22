@@ -1,0 +1,274 @@
+{
+	"info": {
+		"_postman_id": "392516e6-a18f-4420-a01a-1fe4098e9997",
+		"name": "Webelight-assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25803584"
+	},
+	"item": [
+		{
+			"name": "Register ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"New admin\",\r\n    \"email\" : \"newadmin@gmail.com\",\r\n    \"password\" : \"54321\",\r\n    \"role\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"deepakuser@gmail.com\",\r\n    \"password\" : \"12345\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-allproducts",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwMDEzNTMsImV4cCI6MTY5MDg2NTM1M30.dETTC3j3eFPtzx_fqFO81PviDMjZtEOE0X9m1XgqYGY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"Nokia m1\",\r\n    \"category\" : \"Mobiles\",\r\n    \"price\" : 23300\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/get-allproducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get-allproducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/get-product/64bb62ec28faa5cccc124a27",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"get-product",
+						"64bb62ec28faa5cccc124a27"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create-new-product",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiNWZiNzNkOTA5OTNlODg5NTdmMDgiLCJpYXQiOjE2OTAwMjQ1MjgsImV4cCI6MTY5MDQ1NjUyOH0.oZIlopmiV1PZGEdFT4zSz0jnNy6tORbTOV2cpOk66Kc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"dell i5 laptop\",\r\n    \"category\": \"Laptops\",\r\n    \"price\" : 60000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/create-product",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"create-product"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update-Product",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwMDEzNTMsImV4cCI6MTY5MDg2NTM1M30.dETTC3j3eFPtzx_fqFO81PviDMjZtEOE0X9m1XgqYGY",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"oppo f2\",\r\n    \"category\": \"Mobiles\",\r\n    \"price\" : 8000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/update-product/64bb71c3aa9ee0e0197b70e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"update-product",
+						"64bb71c3aa9ee0e0197b70e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete-Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2OTAwMDEzNTMsImV4cCI6MTY5MDg2NTM1M30.dETTC3j3eFPtzx_fqFO81PviDMjZtEOE0X9m1XgqYGY",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/delete-product/64bb71c3aa9ee0e0197b70e5",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"delete-product",
+						"64bb71c3aa9ee0e0197b70e5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get-allcustomers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NGJiNWZiNzNkOTA5OTNlODg5NTdmMDgiLCJpYXQiOjE2OTAwMjQ1MjgsImV4cCI6MTY5MDQ1NjUyOH0.oZIlopmiV1PZGEdFT4zSz0jnNy6tORbTOV2cpOk66Kc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3000/all-customers",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"all-customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Filter-products",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"priceMin\" : 19000,\r\n    \"priceMax\": 30000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/filter-products",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"filter-products"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,6 +1,9 @@
 const Customer = require("../models/customers");
-const hashPassword = require("../helpers/authHelper");
-const comparePassword = require("../helpers/authHelper")
+const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken")
+
+//const comparePassword = require("../helpers/authHelper")
+const JWT_TOKEN = 'hellobrotherhowareyoudoingthisveryevening'
 
 const registerController = async(req,res)=>{
     try{
@@ -19,7 +22,8 @@ const registerController = async(req,res)=>{
         })
      }
      //register
-     const hashedPassword = await hashPassword(password)
+     
+     const hashedPassword = await bcrypt.hash(password,10)
      const customerRegister = await Customer.create({name,email,password:hashedPassword,role});
      res.status(200).send({
         success:true,
@@ -46,14 +50,15 @@ const registerController = async(req,res)=>{
             message:"invalid email or password"
            })
         }
-        const loginCustomer = await Customer.findOne({email});
+        const loginCustomer = await Customer.findOne({email: email});
         if(!loginCustomer){
             return res.status(404).send({
                 success:false,
                 message:"email is not registered"
             })
         }
-        const matchingPassword = await comparePassword(password,loginCustomer.password);
+        //const matchingPassword = await comparePassword(password,loginCustomer.password);
+        const matchingPassword =  bcrypt.compare(password,loginCustomer.password)
         if(!matchingPassword){
             return res.status(404).send({
                 success:false,
@@ -61,10 +66,17 @@ const registerController = async(req,res)=>{
             })
         }
         //generating token for the customer:
-        const token = await jwt.sign({_id:loginCustomer.id},process.env.JWT_TOKEN,{expiresIn:"10d"});
+        const user = {
+            name:loginCustomer.name,
+            email:loginCustomer.email,
+            role:loginCustomer.role
+        }
+        console.log(user)
+        const token = await jwt.sign({_id:loginCustomer.id},JWT_TOKEN,{expiresIn:"10d"});
          res.status(200).send({
             success:true,
             message:"login successful",
+            user,
             token
          })
         }
@@ -77,4 +89,13 @@ const registerController = async(req,res)=>{
         }
         }
 
- module.exports = {registerController,loginController}
+    const allCustomers = async (req, res) => {
+        try {
+          const customers = await Customer.find({role:'user'});
+          res.json(customers);
+        } catch (err) {
+          res.status(500).json({ error: 'Error fetching customers' });
+        }
+      };
+
+ module.exports = {registerController,loginController, allCustomers}
